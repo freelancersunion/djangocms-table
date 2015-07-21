@@ -1,12 +1,13 @@
 import json
-from django.utils.translation import ugettext_lazy as _
-from django.conf import settings
+
 from cms.plugin_pool import plugin_pool
 from cms.plugin_base import CMSPluginBase
-from models import Table
-from djangocms_table.forms import TableForm
-from djangocms_table.utils import static_url
-from django.http import HttpResponseRedirect
+from django.utils.translation import ugettext_lazy as _
+
+from .forms import TableForm
+from .models import Table
+from .utils import static_url
+
 
 class TablePlugin(CMSPluginBase):
     model = Table
@@ -36,7 +37,7 @@ class TablePlugin(CMSPluginBase):
         context.update({
             'name': instance.name,
             'data': data,
-            'instance':instance,
+            'instance': instance,
         })
         return context
 
